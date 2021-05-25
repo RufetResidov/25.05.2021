@@ -16,11 +16,10 @@ namespace ShoppingFormAppp.Models
         public string Name { get; set; }
         public decimal? Price { get; set; }
         public DateTime? PunlishDate { get; set; }
-        public int? Count { get; set; }
         public int? CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
-        public decimal Quantity { get; internal set; }
+        public int Quantity { get; internal set; }
     }
 }

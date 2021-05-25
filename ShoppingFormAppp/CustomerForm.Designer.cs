@@ -38,6 +38,7 @@ namespace ShoppingFormAppp
             this.dtgSellCustomer = new System.Windows.Forms.DataGridView();
             this.lblPrice = new System.Windows.Forms.Label();
             this.btnSell = new System.Windows.Forms.Button();
+            this.lblUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nmQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSellCustomer)).BeginInit();
             this.SuspendLayout();
@@ -111,11 +112,12 @@ namespace ShoppingFormAppp
             0,
             0,
             0});
+            this.nmQuantity.ValueChanged += new System.EventHandler(this.nmQuantity_ValueChanged_1);
             // 
             // dtgSellCustomer
             // 
             this.dtgSellCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgSellCustomer.Location = new System.Drawing.Point(382, 41);
+            this.dtgSellCustomer.Location = new System.Drawing.Point(334, 96);
             this.dtgSellCustomer.Name = "dtgSellCustomer";
             this.dtgSellCustomer.RowTemplate.Height = 25;
             this.dtgSellCustomer.Size = new System.Drawing.Size(363, 334);
@@ -140,12 +142,23 @@ namespace ShoppingFormAppp
             this.btnSell.TabIndex = 8;
             this.btnSell.Text = "Sell";
             this.btnSell.UseVisualStyleBackColor = true;
+            this.btnSell.Click += new System.EventHandler(this.btnSell_Click);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(360, 32);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(52, 21);
+            this.lblUser.TabIndex = 9;
+            this.lblUser.Text = "label4";
             // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(849, 450);
+            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnSell);
             this.Controls.Add(this.lblPrice);
             this.Controls.Add(this.dtgSellCustomer);
@@ -177,5 +190,6 @@ namespace ShoppingFormAppp
         private System.Windows.Forms.DataGridView dtgSellCustomer;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Button btnSell;
+        private System.Windows.Forms.Label lblUser;
     }
 }

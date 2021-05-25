@@ -15,8 +15,10 @@ namespace ShoppingFormAppp
     {
         ShoppingContext db = new ShoppingContext();
         Product selectedProduct;
-        public CustomerForm()
+        User activeUser;
+        public CustomerForm(User us)
         {
+            activeUser = us;
             InitializeComponent();
         }
         public void FillCategoryCombo()
@@ -26,6 +28,7 @@ namespace ShoppingFormAppp
 
         private void CustomerForm_Load(object sender, EventArgs e)
         {
+            lblUser.Text = "SalamCoder " +activeUser.Fullname;
             FillCategoryCombo();
         }
 
@@ -46,13 +49,32 @@ namespace ShoppingFormAppp
             selectedProduct = db.Products.FirstOrDefault(x => x.Name == cmbProducts.Text);
             lblPrice.Text = selectedProduct.Price + "Azn";
             lblPrice.Visible = true;
-            nmQuantity.Value = 1;
         }
 
-        private void nmQuantity_ValueChanged(object sender, EventArgs e)
+    
+
+        private void nmQuantity_ValueChanged_1(object sender, EventArgs e)
         {
-            nmQuantity.Maximum = (decimal)selectedProduct.Count;
-            lblPrice.Text = selectedProduct.Price * nmQuantity.Value+ "Azn";
+            nmQuantity.Maximum = (decimal)selectedProduct.Quantity;
+            lblPrice.Text = selectedProduct.Price * nmQuantity.Value + "Azn";
+
+        }
+
+        private void btnSell_Click(object sender, EventArgs e)
+        {
+            Order ord = new()
+            {
+                UserId = activeUser.Id,
+                ProductId = selectedProduct.Id,
+                Count = (int)nmQuantity.Value,
+                PurchaseDate = DateTime.Now,
+                TotalPrice =(decimal)(selectedProduct.Price*nmQuantity.Value)
+            };
+            selectedProduct.Quantity -= (int)nmQuantity.Value;
+            db.Orders.Add(ord);
+            db.SaveChanges();
+            MessageBox.Show("Product sell succesfully", "succesfuly", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }

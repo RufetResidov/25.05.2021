@@ -39,7 +39,7 @@ namespace ShoppingFormAppp
                         }
                         else if (userRolesId == 1)
                         {
-                            CustomerForm cdm = new CustomerForm();
+                            CustomerForm cdm = new CustomerForm(selectedUser);
                             cdm.ShowDialog();
 
                         }
